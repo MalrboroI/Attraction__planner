@@ -1,0 +1,41 @@
+.attraction-form {
+  padding: $spacing-m;
+  width: 600px;
+  max-width: 100%;
+
+  &__header {
+    margin-bottom: $spacing-l;
+    text-align: center;
+  }
+
+  &__body {
+    @include flex-column;
+    gap: $spacing-m;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-m;
+  }
+
+  &__preview {
+    margin-top: $spacing-s;
+    max-height: 200px;
+    width: auto;
+    border-radius: $border-radius-s;
+  }
+
+  &__footer {
+    @include flex-between;
+    margin-top: $spacing-l;
+  }
+
+  @include responsive(tablet) {
+    width: 100%;
+
+    &__row {
+      grid-template-columns: 1fr;
+    }
+  }
+}

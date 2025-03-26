@@ -1,0 +1,23 @@
+.admin-panel {
+  @include flex-column;
+  gap: $spacing-l;
+
+  &__header {
+    @include flex-between;
+    align-items: center;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacing-m;
+  }
+
+  @include responsive(tablet) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-m;
+    }
+  }
+}

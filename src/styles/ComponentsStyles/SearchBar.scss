@@ -1,0 +1,71 @@
+.search-bar {
+  // flex: 1;
+  // max-width: 400px;
+  // min-width: 200px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: $spacing-m;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,..."); // SVG иконки
+    z-index: 1;
+  }
+
+  .gravity-ui-text-input__control {
+    padding-left: $spacing-xl;
+  }
+
+  &__input {
+    width: 100%;
+    position: relative;
+
+    .gravity-ui-text-input {
+      width: 100%;
+      border-radius: $border-radius-l;
+      border: 1px solid $border-color;
+      transition: all 0.2s ease;
+
+      &:focus-within {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+
+      &__control {
+        padding: $spacing-s $spacing-m;
+        color: $text-color;
+        font-size: $font-size-m;
+
+        &::placeholder {
+          color: $text-secondary;
+        }
+      }
+
+      &__clear {
+        color: $text-secondary;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: $text-color;
+        }
+      }
+    }
+
+    .gravity-ui-icon {
+      color: $text-secondary;
+    }
+  }
+
+  @include responsive(tablet) {
+    max-width: 300px;
+  }
+
+  @include responsive(mobile) {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

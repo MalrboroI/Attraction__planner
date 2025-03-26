@@ -1,0 +1,87 @@
+.filters {
+  @include flex-center;
+  gap: $spacing-m;
+  flex-wrap: wrap;
+
+  &__select {
+    min-width: 200px;
+
+    .gravity-ui-select {
+      &__control {
+        border-radius: $border-radius-l;
+        border-color: $border-color;
+        transition: all 0.2s ease;
+
+        &:hover {
+          border-color: $border-color, 10%;
+        }
+
+        &--is-focused {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+
+      &__value {
+        color: $text-color;
+        font-size: $font-size-m;
+      }
+
+      &__arrow {
+        color: $text-secondary;
+      }
+    }
+  }
+
+  &__sort-direction {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-xs;
+    padding: $spacing-s $spacing-m;
+    border-radius: $border-radius-l;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+    color: $text-color;
+    font-size: $font-size-m;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $border-color, 10%;
+      background-color: $background-color, 2%;
+    }
+
+    &:active {
+      background-color: $background-color, 5%;
+    }
+
+    .gravity-ui-icon {
+      color: $text-secondary;
+      transition: transform 0.2s ease;
+    }
+
+    &--asc .gravity-ui-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include responsive(tablet) {
+    width: 100%;
+    justify-content: flex-start;
+
+    &__select {
+      flex: 1;
+      min-width: auto;
+    }
+  }
+
+  @include responsive(mobile) {
+    @include flex-column;
+    align-items: stretch;
+    gap: $spacing-s;
+
+    &__select,
+    &__sort-direction {
+      width: 100%;
+    }
+  }
+}

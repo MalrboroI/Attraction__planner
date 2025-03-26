@@ -1,0 +1,48 @@
+.attraction-card {
+  @include card-style;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: $spacing-m;
+  margin-bottom: $spacing-m;
+
+  &__image {
+    height: 200px;
+    border-radius: $border-radius-s;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    @include flex-column;
+    gap: $spacing-s;
+  }
+
+  &__meta {
+    display: flex;
+    gap: $spacing-l;
+    color: $text-secondary;
+    font-size: $font-size-s;
+  }
+
+  &__description {
+    flex-grow: 1;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-s;
+  }
+
+  @include responsive(tablet) {
+    grid-template-columns: 1fr;
+
+    &__image {
+      height: 150px;
+    }
+  }
+}

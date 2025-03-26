@@ -1,0 +1,85 @@
+.attraction-table {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  &__counter {
+    margin-bottom: 16px;
+  }
+
+  .gravity-ui-table {
+    width: 100%;
+  }
+}
+
+.attraction-view {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  &__search {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    min-width: 300px;
+  }
+
+  &__view-toggle {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .gravity-ui-radio-button {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__counter {
+    margin-bottom: 16px;
+  }
+
+  .attraction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 8px 0;
+  }
+
+  @include responsive(tablet) {
+    .attraction-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  @include responsive(mobile) {
+    &__controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__search {
+      min-width: 100%;
+    }
+
+    .attraction-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

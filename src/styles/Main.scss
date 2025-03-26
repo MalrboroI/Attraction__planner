@@ -1,0 +1,40 @@
+// Глобальные стили
+@import "./GlobalStyles/variables";
+@import "./GlobalStyles/mixins";
+
+// Локальные, компонентные стили
+@import "./ComponentsStyles/AdminPanel.scss";
+@import "./ComponentsStyles//AttractionCard.scss";
+@import "./ComponentsStyles/AttractionForm.scss";
+@import "./ComponentsStyles/AttractionTable.scss";
+@import "./ComponentsStyles/Filters.scss";
+@import "./ComponentsStyles/Footer.scss";
+@import "./ComponentsStyles/Header.scss";
+@import "./ComponentsStyles/SearchBar.scss";
+
+body {
+  margin: 0;
+  font-family: var(--g-font-family-sans);
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.5;
+}
+
+.app {
+  @include flex-column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  padding: $spacing-l;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// Общие стили для Gravity UI компонентов
+.g-root {
+  @include flex-column;
+  min-height: 100vh;
+}

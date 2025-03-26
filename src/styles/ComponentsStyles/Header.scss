@@ -1,0 +1,27 @@
+.header {
+  background-color: $primary-color;
+  color: white;
+  padding: $spacing-m $spacing-l;
+  box-shadow: $shadow-m;
+
+  &__content {
+    @include flex-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: $spacing-m;
+  }
+
+  @include responsive(tablet) {
+    padding: $spacing-s $spacing-m;
+
+    &__content {
+      flex-direction: column;
+      gap: $spacing-s;
+      align-items: flex-start;
+    }
+  }
+}
