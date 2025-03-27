@@ -1,9 +1,39 @@
 .attraction-card {
   @include card-style;
-  display: grid;
+  // display: grid;
   grid-template-columns: 300px 1fr;
   gap: $spacing-m;
   margin-bottom: $spacing-m;
+
+  &__header {
+    position: fixed;
+
+    .favorite-btn {
+      .favorite-icon {
+        &--isSelected {
+          color: var(--g-color-base-brand);
+          &:hover {
+            color: var(--g-color-text-link-hover);
+          }
+        }
+
+        &--noSelected {
+          color: var(--g-color-base-brand);
+          &:hover {
+            color: var(--g-color-text-link-hover);
+          }
+        }
+      }
+    }
+  }
+
+  .gravity-ui-button {
+    color: var(--g-color-base-warning);
+
+    &--selected {
+      color: var(--g-color-base-warning-heavy);
+    }
+  }
 
   &__image {
     height: 200px;
@@ -38,7 +68,7 @@
     gap: $spacing-s;
   }
 
-  @include responsive(tablet) {
+  @include responsive("tablet") {
     grid-template-columns: 1fr;
 
     &__image {
@@ -46,3 +76,17 @@
     }
   }
 }
+
+// .favorite-icon {
+//   &:hover {
+//     color: var(--g-color-base-brand);
+//   }
+
+//   &--isSelected {
+//     color: var(--g-color-base-brand);
+//   }
+
+//   &--noSelected {
+//     color: red;
+//   }
+// }

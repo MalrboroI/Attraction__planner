@@ -21,19 +21,6 @@ export interface Coordinates {
   lng: number;
 }
 
-// export interface Attraction {
-//   id: string;
-//   name: string;
-//   description: string;
-//   addedAt: Date;
-//   rating: number;
-//   image: string;
-//   location: string;
-//   coordinates: Coordinates;
-//   mapLink: string;
-//   status: AttractionStatus;
-// }
-
 export interface AttractionFormValues
   extends Omit<Attraction, "id" | "addedAt" | "mapLink"> {
   id?: string;
@@ -45,3 +32,12 @@ export interface ApiResponse<T> {
   success: boolean;
   message?: string;
 }
+
+// Типы для storage
+
+export type CachedAttractions = {
+  ids: string[]; // ID избранных достопримечательностей
+  lastUpdated: string; // Дата последнего обновления
+};
+
+export const STORAGE_KEY = "user_selected_attractions";

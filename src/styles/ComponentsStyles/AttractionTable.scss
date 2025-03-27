@@ -8,6 +8,7 @@
     gap: 16px;
     margin-bottom: 20px;
     align-items: center;
+    min-height: 30px;
   }
 
   &__counter {
@@ -36,7 +37,21 @@
     display: flex;
     gap: 16px;
     flex: 1;
-    min-width: 300px;
+    min-width: 400px;
+    align-items: center;
+
+    Button {
+      span {
+        padding-left: 5px;
+      }
+    }
+    .attraction-view {
+      &__icon {
+        position: fixed;
+        left: 4px;
+        top: 6px;
+      }
+    }
   }
 
   &__view-toggle {

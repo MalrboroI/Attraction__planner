@@ -11,7 +11,9 @@ interface Stores {
 export const useStores = (): Stores => {
   const context = useContext(RootStoreContext);
   if (!context) {
-    throw new Error("useStores must be used within a RootStoreProvider");
+    throw new Error(
+      "useStores необходимо использовать внутри RootStoreProvider"
+    );
   }
   return context;
 };

@@ -1,21 +1,21 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import {
-  Attraction,
-  // AttractionStatus
-} from "../GlobalTypes/Types";
+import type { Attraction } from "../GlobalTypes/Types";
 import { generateMapLink } from "../Utils/helpers";
+import { getCachedAttractions, saveToCache } from "../../storage/storage";
 
-class AttractionsStore {
+export default class AttractionsStore {
   attractions: Attraction[] = [];
   filteredAttractions: Attraction[] = [];
   searchQuery = "";
   hideVisited = false;
   sortField: keyof Attraction | null = null;
   sortDirection: "asc" | "desc" = "asc";
+  selectedAttractions: string[] = []; // ID избранных достопримечательностей
 
   constructor() {
     makeAutoObservable(this);
     this.loadAttractions();
+    this.loadCachedSelections();
   }
 
   // Загрузка начальных данных (в реальном приложении - API-запрос)
@@ -161,6 +161,39 @@ class AttractionsStore {
   get filteredCount() {
     return this.filteredAttractions.length;
   }
-}
 
-export default AttractionsStore;
+  // Хранилище storage
+
+  loadCachedSelections() {
+    // загрузка из LocalStorage
+    const cached = getCachedAttractions();
+    this.selectedAttractions = cached.ids;
+  }
+
+  toggleAttractionSelection(id: string) {
+    // Переключение выбора достопримечательности и обработки ошибки
+    try {
+      if (this.selectedAttractions.includes(id)) {
+        this.selectedAttractions = this.selectedAttractions.filter(
+          (item) => item !== id
+        );
+      } else {
+        this.selectedAttractions = [...this.selectedAttractions, id];
+      }
+      saveToCache(this.selectedAttractions);
+    } catch (error) {
+      console.error("Failed to toggle selection:", error);
+    }
+  }
+
+  // Проверка, выбрана ли достопримечательность
+  isSelected(id: string): boolean {
+    return this.selectedAttractions.includes(id);
+  }
+  // Получение списка избранных
+  get favorites(): Attraction[] {
+    return this.attractions.filter((attraction) =>
+      this.selectedAttractions.includes(attraction.id)
+    );
+  }
+}

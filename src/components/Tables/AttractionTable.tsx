@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useStores } from "../Hooks/useStore";
-import { Table, Text, Button, Icon, Radio } from "@gravity-ui/uikit";
+import { Table, Text, Button, Icon, Radio, Link } from "@gravity-ui/uikit";
+import { Bookmark } from "@gravity-ui/icons";
 import { Filters } from "../Filters/Filters";
 import { SearchBar } from "../Search/SearchBar";
 import { AttractionCard } from "../Card/AttractionCard";
@@ -60,16 +61,24 @@ export const AttractionTable = observer(() => {
           <Button onClick={() => attractionsStore.toggleHideVisited()}>
             {hideVisited ? (
               <>
-                <Icon data={EyeSlash} size={16} />
+                <Icon
+                  className="attraction-view__icon"
+                  data={EyeSlash}
+                  size={16}
+                />
                 <span>Показать осмотренные</span>
               </>
             ) : (
               <>
-                <Icon data={Eye} size={16} />
+                <Icon className="attraction-view__icon" data={Eye} size={16} />
                 <span>Скрыть осмотренные</span>
               </>
             )}
           </Button>
+          <Link href="/favorites">
+            <Icon data={Bookmark} size={20} />
+            <span>Избранное</span>
+          </Link>
         </div>
 
         <div className="attraction-view__view-toggle">
@@ -123,39 +132,3 @@ export const AttractionTable = observer(() => {
     </div>
   );
 });
-
-//   return (
-//     <div className="attraction-table">
-//       <div className="attraction-table__controls">
-//         <SearchBar />
-//         <Button onClick={() => attractionsStore.toggleHideVisited()}>
-//           {hideVisited ? (
-//             <>
-//               <Icon data={EyeSlash} size={16} />
-//               <span>Показать осмотренные</span>
-//             </>
-//           ) : (
-//             <>
-//               <Icon data={Eye} size={16} />
-//               <span>Скрыть осмотренные</span>
-//             </>
-//           )}
-//         </Button>
-//         <Filters />
-//       </div>
-
-//       <div className="attraction-table__counter">
-//         <Text variant="subheader-2">
-//           Показано {filteredCount} из {attractionsCount} достопримечательностей
-//         </Text>
-//       </div>
-
-//       <Table
-//         data={filteredAttractions}
-//         columns={columns}
-//         emptyMessage="Нет достопримечательностей"
-//         onRowClick={(item) => console.log("Selected:", item)}
-//       />
-//     </div>
-//   );
-// });

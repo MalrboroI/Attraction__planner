@@ -1,7 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { Attraction } from "../GlobalTypes/Types";
-import { Card, Text, Button } from "@gravity-ui/uikit";
+import { useStores } from "../Hooks/useStore";
+import { Card, Text, Button, Icon } from "@gravity-ui/uikit";
 import { formatDate, getStatusLabel } from "../Utils/helpers";
+import { Star, StarFill } from "@gravity-ui/icons";
 
 interface AttractionCardProps {
   attraction: Attraction;
@@ -10,8 +12,34 @@ interface AttractionCardProps {
 
 export const AttractionCard = observer(
   ({ attraction, onEdit }: AttractionCardProps) => {
+    const { attractionsStore } = useStores();
+    // const isSelected = attractionsStore.selectedAttractions.includes(
+    //   attraction.id
+    // );
+    const isSelected = attractionsStore.isSelected(attraction.id);
+
     return (
       <Card className="attraction-card" view="raised">
+        <div className="attraction-card__header">
+          {/* <h3>{attraction.name}</h3> */}
+          <Button
+            className="favorite-btn"
+            view="flat"
+            onClick={() =>
+              attractionsStore.toggleAttractionSelection(attraction.id)
+            }
+          >
+            <Icon
+              data={isSelected ? StarFill : Star}
+              size={18}
+              className={
+                isSelected
+                  ? "favorite-icon--isSelected"
+                  : "favorite-icon--noSelected"
+              }
+            />
+          </Button>
+        </div>
         <div className="attraction-card__image">
           <img src={attraction.image} alt={attraction.name} />
         </div>
