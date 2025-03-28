@@ -6,7 +6,7 @@
   margin-bottom: $spacing-m;
 
   &__header {
-    position: fixed;
+    position: absolute;
 
     .favorite-btn {
       .favorite-icon {

@@ -12,14 +12,14 @@ export const FavoritesPage = observer(() => {
     <div className="favorites-page">
       <h1>Избранные достопримечательности</h1>
       {favorites.length === 0 ? (
-        <p>Вы пока не добавили ничего в избранное</p>
+        <p>Добавьте достопримечательность в избранное</p>
       ) : (
         <div className="favorites-grid">
           {favorites.map((attraction) => (
             <AttractionCard
               key={attraction.id}
               attraction={attraction}
-              onEdit={() => uiStore.openForm(attraction.id)} // Используем uiStore напрямую
+              onEdit={() => uiStore.openForm(attraction.id)}
             />
           ))}
         </div>

@@ -13,10 +13,11 @@ interface AttractionCardProps {
 export const AttractionCard = observer(
   ({ attraction, onEdit }: AttractionCardProps) => {
     const { attractionsStore } = useStores();
-    // const isSelected = attractionsStore.selectedAttractions.includes(
-    //   attraction.id
-    // );
     const isSelected = attractionsStore.isSelected(attraction.id);
+
+    const handleToggleFavorite = () => {
+      attractionsStore.toggleAttractionSelection(attraction.id);
+    };
 
     return (
       <Card className="attraction-card" view="raised">
@@ -25,8 +26,9 @@ export const AttractionCard = observer(
           <Button
             className="favorite-btn"
             view="flat"
-            onClick={() =>
-              attractionsStore.toggleAttractionSelection(attraction.id)
+            onClick={handleToggleFavorite}
+            title={
+              isSelected ? "Удалить из избранного" : "Добавить в избранное"
             }
           >
             <Icon

@@ -3,14 +3,14 @@ export interface Attraction {
   name: string; // Название
   description: string; // Описание
   addedAt: Date; // Дата и время добавления
-  rating: number; // Рейтинг (1-5)
-  image: string; // URL фото
+  rating: number; // Рейтинг (от 1 до 5)
+  image: string; // URL картинки
   location: string; // Текстовое описание местоположения
   coordinates: {
-    lat: number; // Широта
-    lng: number; // Долгота
+    lat: number; // Широта до 4х цифр после запятой
+    lng: number; // Долгота до 4х цифр после запятой
   };
-  mapLink: string; // Ссылка на карты (формируется автоматически)
+  mapLink: string; // Ссылка на карты (формируем по координатам и методе generateMapLink())
   status: "planned" | "visited"; // Статус
 }
 
