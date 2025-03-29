@@ -1,7 +1,8 @@
 .filters {
-  @include flex-center;
+  @include flex-start;
   gap: $spacing-m;
   flex-wrap: wrap;
+  margin-top: 4px;
 
   &__select {
     min-width: 200px;
@@ -64,7 +65,7 @@
     }
   }
 
-  @include responsive(tablet) {
+  @include responsive("tablet") {
     width: 100%;
     justify-content: flex-start;
 
@@ -74,7 +75,7 @@
     }
   }
 
-  @include responsive(mobile) {
+  @include responsive("mobile") {
     @include flex-column;
     align-items: stretch;
     gap: $spacing-s;

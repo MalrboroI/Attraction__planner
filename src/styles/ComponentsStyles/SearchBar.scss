@@ -1,8 +1,6 @@
 .search-bar {
-  // flex: 1;
-  // max-width: 400px;
-  // min-width: 200px;
   position: relative;
+  width: 16rem;
 
   &::before {
     content: "";
@@ -12,7 +10,7 @@
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background-image: url("data:image/svg+xml,..."); // SVG иконки
+    background-image: url("data:image/svg+xml,...");
     z-index: 1;
   }
 
@@ -60,11 +58,11 @@
     }
   }
 
-  @include responsive(tablet) {
+  @include responsive("tablet") {
     max-width: 300px;
   }
 
-  @include responsive(mobile) {
+  @include responsive("mobile") {
     max-width: 100%;
     min-width: 100%;
   }

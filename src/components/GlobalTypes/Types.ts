@@ -27,6 +27,7 @@ export interface AttractionFormValues
 }
 
 // Типы для API ответов
+
 export interface ApiResponse<T> {
   data: T;
   success: boolean;

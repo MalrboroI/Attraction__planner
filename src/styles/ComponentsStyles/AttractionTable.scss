@@ -20,18 +20,38 @@
   }
 }
 
+.g-table {
+  overflow-x: auto;
+}
+
 .attraction-view {
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 
-  &__controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 20px;
-    align-items: center;
+  // Кнопка скрыть и показать осмотренные
+
+  .tooltip-content {
+    padding: $spacing-xs;
+    font-size: $font-size-s;
   }
+
+  .status-btn {
+    padding: $spacing-xs;
+
+    &.planned {
+      color: var(--g-color-base-warning);
+    }
+    &.visited {
+      color: var(--g-color-base-positive);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  //
 
   &__search {
     display: flex;
@@ -45,29 +65,37 @@
         padding-left: 5px;
       }
     }
-    .attraction-view {
-      &__icon {
-        position: fixed;
-        left: 4px;
-        top: 6px;
-      }
-    }
   }
+
+  &__btn {
+    background-color: transparent;
+    border: 1px solid var(--g-color-line-generic);
+  }
+
+  &__icon {
+    position: fixed;
+    left: 4px;
+    top: 6px;
+  }
+
+  // Выбор вида отображение контента
 
   &__view-toggle {
     display: flex;
     gap: 8px;
     align-items: center;
+    margin: 8px 0 8px 0;
 
-    .gravity-ui-radio-button {
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    span {
+      margin-left: 4px;
+      font-size: $font-size-xs;
     }
   }
 
+  //
+
   &__counter {
-    margin-bottom: 16px;
+    margin: 12px 0 4px 0;
   }
 
   .attraction-grid {
@@ -75,15 +103,16 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
     padding: 8px 0;
+    overflow: auto;
   }
 
-  @include responsive(tablet) {
+  @include responsive("tablet") {
     .attraction-grid {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
   }
 
-  @include responsive(mobile) {
+  @include responsive("mobile") {
     &__controls {
       flex-direction: column;
       align-items: stretch;
@@ -96,5 +125,15 @@
     .attraction-grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+.table-actions {
+  display: flex;
+  gap: $spacing-xs;
+  justify-content: center;
+
+  .gravity-ui-button {
+    padding: $spacing-xs;
   }
 }

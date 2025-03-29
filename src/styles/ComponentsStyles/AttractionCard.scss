@@ -50,6 +50,7 @@
   &__content {
     @include flex-column;
     gap: $spacing-s;
+    margin-top: 4px;
   }
 
   &__meta {
@@ -75,18 +76,47 @@
       height: 150px;
     }
   }
+
+  // Режим администатора
+
+  &__edit-btn {
+    width: 100%;
+  }
+
+  &__edit-btn {
+    font-size: $font-size-s;
+    margin-bottom: $spacing-s;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    margin-top: $spacing-m;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+  }
+
+  &__edit-btn,
+  &__delete-btn {
+    width: 100%;
+  }
+
+  .favorite-active {
+    color: var(--g-color-base-danger);
+  }
+
+  &--compact {
+    padding: $spacing-s;
+    gap: $spacing-xs;
+
+    .attraction-card__controls {
+      margin-top: $spacing-xs;
+      gap: $spacing-xs;
+    }
+  }
 }
-
-// .favorite-icon {
-//   &:hover {
-//     color: var(--g-color-base-brand);
-//   }
-
-//   &--isSelected {
-//     color: var(--g-color-base-brand);
-//   }
-
-//   &--noSelected {
-//     color: red;
-//   }
-// }

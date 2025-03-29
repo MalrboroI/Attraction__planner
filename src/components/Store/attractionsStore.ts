@@ -18,10 +18,9 @@ export default class AttractionsStore {
     this.loadCachedSelections();
   }
 
-
   // Загрузка начальных данных (в реальном приложении - API-запрос)
   async loadAttractions() {
-    // Имитация загрузки
+    // Имитация загрузки через async await
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     const mockAttractions: Attraction[] = [
@@ -247,12 +246,6 @@ export default class AttractionsStore {
   }
 
   // Хранилище storage
-  
-  // loadCachedSelections() {
-  //   const cached = getCachedAttractions();
-  //   runInAction(() => {
-  //     this.selectedAttractions = cached.ids;
-  //   });
 
   loadCachedSelections() {
     // загрузка из LocalStorage
@@ -285,5 +278,9 @@ export default class AttractionsStore {
     return this.attractions.filter((attraction) =>
       this.selectedAttractions.includes(attraction.id)
     );
+    // clearFavorites() {
+    //   this.selectedAttractions = [];
+    //   saveToCache([]);
+    // }
   }
 }

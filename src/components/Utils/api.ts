@@ -119,17 +119,3 @@ export const deleteAttraction = async (
     };
   }
 };
-// export const fetchAttractions = async () => {
-//   // Имитация API-запроса
-//   return new Promise((resolve) => setTimeout(resolve, 500));
-// };
-
-// export const saveAttraction = async (attraction: any) => {
-//   // Имитация API-запроса
-//   return new Promise((resolve) => setTimeout(resolve, 300));
-// };
-
-// export const deleteAttraction = async (id: string) => {
-//   // Имитация API-запроса
-//   return new Promise((resolve) => setTimeout(resolve, 300));
-// };

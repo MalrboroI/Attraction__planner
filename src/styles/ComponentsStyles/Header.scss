@@ -8,6 +8,12 @@
     @include flex-between;
     max-width: 1200px;
     margin: 0 auto;
+    &__text {
+      color: var(--g-color-text-primary);
+      &:hover {
+        color: var(--g-color-text-secondary);
+      }
+    }
   }
 
   &__actions {
@@ -15,7 +21,7 @@
     gap: $spacing-m;
   }
 
-  @include responsive(tablet) {
+  @include responsive("tablet") {
     padding: $spacing-s $spacing-m;
 
     &__content {

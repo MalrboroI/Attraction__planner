@@ -8,7 +8,9 @@ export const Header = observer(() => {
     <header className="header">
       <div className="header__content">
         <Link href="/">
-          <Text variant="header-1">Планировщик достопримечательностей</Text>
+          <Text className="header__content__text" variant="header-1">
+            Планировщик достопримечательностей
+          </Text>
         </Link>
 
         <div className="header__actions">

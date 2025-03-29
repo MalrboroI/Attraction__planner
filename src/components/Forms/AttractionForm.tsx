@@ -6,7 +6,6 @@ import {
   TextInput,
   TextArea,
   Select,
-  // DatePicker,
   FilePreview,
 } from "@gravity-ui/uikit";
 import { Attraction, AttractionStatus } from "../GlobalTypes/Types";
@@ -80,18 +79,6 @@ export const AttractionForm = observer(() => {
 
     uiStore.closeForm();
   };
-
-  // const createFileObject = (url: string) => ({
-  //   name: "Preview",
-  //   size: 0,
-  //   lastModified: Date.now(),
-  //   type: "image/*",
-  //   webkitRelativePath: "",
-  //   arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
-  //   slice: () => new Blob(),
-  //   stream: () => new ReadableStream(),
-  //   text: () => Promise.resolve(""),
-  // });
 
   const createFileObject = (imageUrl: string): File => {
     // Создаем Blob с пустым содержимым, так как нам нужно только отображение по URL
@@ -233,12 +220,21 @@ export const AttractionForm = observer(() => {
         </div>
 
         <div className="attraction-form__footer">
-          <Button type="submit" view="action" size="l">
+          {uiStore.currentAttractionId && (
+            <Button
+              view="outlined-danger"
+              onClick={() => {
+                attractionsStore.deleteAttraction(uiStore.currentAttractionId!);
+                uiStore.closeForm();
+              }}
+            >
+              Удалить
+            </Button>
+          )}
+          <Button type="submit" view="action">
             {uiStore.currentAttractionId ? "Сохранить" : "Добавить"}
           </Button>
-          <Button onClick={() => uiStore.closeForm()} size="l">
-            Отмена
-          </Button>
+          <Button onClick={() => uiStore.closeForm()}>Отмена</Button>
         </div>
       </form>
     </Modal>
